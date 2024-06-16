@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sage</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://kit.fontawesome.com/194f255551.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <div class="mobile-header" id="mobileHeader">
+        <div class="general-mobile-header">
+            <div class="inside-mobile-header">
+                <div class="profile-picture" onclick="showprofileMobile()">
+                    <div class="icon-for-profile-picture" id="icon-for-profile-picture">
+                        <i class="fa-regular fa-user fa-2xl" style="color: rgb(0, 25, 102);"></i>
+                    </div>
+                    <img src="" alt="" id="profilepic">
+                </div>
+                <h2>H1, <span id="UsernameMobileFormat"></span></h2>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-view-profile" id="mobile-view-profile">
+        <div class="inside-account-page-mobile">
+            <div class="general-inside-account-page">
+                <div class="container-account">
+                    <h2>Account Details</h2>
+                    <div class="back-account">
+                        <button onclick="goBackFromMobile()"><span class="material-symbols-outlined">chevron_left</span> Back</button>
+                    </div>
+                    <div class="second-account">
+                        <div class="profile-image">
+                            <div class="icon-for-profile-picture" id="icon-for-profile-picture-three">
+                                <i class="fa-regular fa-user fa-2xl" style="color: rgb(0, 25, 102);"></i>
+                            </div>
+                            <img src="" alt="" id="profilepicThree">
+                        </div>
+                        <div class="third-account">
+                            <h4 id="userId">Hello</h4>
+                        </div>
+                    </div>
+                    <div class="below-account">
+                        <div class="each-container">
+                            <p>Your Username</p>
+                            <div class="editing-container">
+                                <p id="UsernameMobile@"></p>
+                                <button onclick="editInfo()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>First Name</p>
+                            <div class="editing-container">
+                                <p id="accountNameMobile"></p>
+                                <button onclick="editInfoTwo()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>Lastname</p>
+                            <div class="editing-container">
+                                <p id="countryFromMobile"></p>
+                                <button onclick="editInfoThree()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>Email Address</p>
+                            <div class="editing-container">
+                                <p id="emailAddressMobile"></p>
+                                <button onclick="editInfoFour()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>Phone Number</p>
+                            <div class="editing-container">
+                                <p id="phoneNumberMobile"></p>
+                                <button onclick="editInfoFive()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>Gender</p>
+                            <div class="editing-container">
+                                <p id="genderMobile"></p>
+                                <button onclick="editInfoSix()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>Date Of Birth</p>
+                            <div class="editing-container">
+                                <p id="dateOfBirthMobile"></p>
+                                <button onclick="editInfoSeven()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="each-container">
+                            <p>Marital Status</p>
+                            <div class="editing-container">
+                                <p id="maritalStatusMobile"></p>
+                                <button onclick="editInfoEight()">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="myModaloneMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Username</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsername">@mutalib</h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsername">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccount()">Cancel</button>
+                                    <button onclick="confirmEditing()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalTwoMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Firstname</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameTwo">@mutalib</h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsernametwo">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountTwo()">Cancel</button>
+                                    <button onclick="confirmEditingTwo()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalThreeMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Lastname</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameThree">@mutalib</h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsernamethree">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountThree()">Cancel</button>
+                                    <button onclick="confirmEditingThree()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalFourMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Email Address Name</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameFour"></h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsernameFour">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountFour()">Cancel</button>
+                                    <button onclick="confirmEditingFour()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalFiveMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Phone Number</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameFive"></h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="number" placeholder="Enter your new Username" id="userUsernameFive">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountFive()">Cancel</button>
+                                    <button onclick="confirmEditingFive()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalSixMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Gender Name</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameSix"></h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsernameSix">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountSix()">Cancel</button>
+                                    <button onclick="confirmEditingSix()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalSevenMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Date Of Birth</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameSeven"></h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsernameSeven">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountSeven()">Cancel</button>
+                                    <button onclick="confirmEditingSeven()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id="myModalEightMobile" class="modal-each-container">
+                        <div class="modal">
+                            <div class="modal-content">
+                                <h4>Edit Your Marital Status</h4>
+                                <div class="input-field">
+                                    <p>Username</p>
+                                    <h5 id="showuserUsernameEight"></h5>
+                                </div>
+                                <div class="input-field">
+                                    <p>New Username</p>
+                                    <input type="text" placeholder="Enter your new Username" id="userUsernameEight">
+                                </div>
+                                <div class="editing-btn">
+                                    <button class="canceleditingbutton" onclick="cancelModalForAccountEight()">Cancel</button>
+                                    <button onclick="confirmEditingEight()">Confirm</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="delete-account">
+                        <button onclick="DeleteAccount()">Delete Account<span class="material-symbols-outlined">chevron_right</span></button>
+                        <button>Restrict Account<span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="general-header">
+        <div class="inside-header">
+            <div class="general">
+                <div class="logo">
+                    <img src="../pictures/SAGE_Publishing_logo_2023.svg.png" alt="">
+                </div>
+                <div class="navigation">
+                    <div class="each-nav">
+                        <button onclick="homepage()" id="home"><span class="material-symbols-outlined">home</span>Home</button>
+                    </div>
+                    <div class="each-nav">
+                        <button onclick="sendpage()" id="send"><span class="material-symbols-outlined">send</span>send</button>
+                    </div>
+                    <div class="each-nav">
+                        <button onclick="paypage()" id="receipt"><span class="material-symbols-outlined">receipt</span>Pay</button>
+                    </div>
+                    <div class="each-nav budget">
+                        <button onclick="budgetpage()" id="budget"><span class="material-symbols-outlined">pie_chart</span>History</button>
+                    </div>
+                    <div class="each-nav">
+                        <button onclick="cardpage()" id="card"><span class="material-symbols-outlined">credit_card</span>Card</button>
+                    </div>
+                    <div class="each-nav more">
+                        <button onclick="accountpage()" id="card"><span class="material-symbols-outlined">credit_card</span>More</button>
+                    </div>
+                </div>
+                <button onclick="accountpage()" class="account" id="account">
+                    <div class="profile-picture">
+                        <div class="icon-for-profile-picture" id="icon-for-profile-picture">
+                            <i class="fa-regular fa-user fa-2xl" style="color: rgb(0, 25, 102);"></i>
+                        </div>
+                        <img src="" alt="" id="profilepic">
+                    </div>
+                    <p id="account-text">Account</p>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="account-page" id="account-page">
+            <div class="inside-account-page" id="profile-page">
+                <div class="general-inside-account-page">
+                    <h2>Account</h2>
+                    <div class="container-account">
+                        <div class="second-account">
+                            <div class="profile-image" onclick="openImage()">
+                                <div class="icon-for-profile-picture" id="icon-for-profile-picture-two">
+                                    <i class="fa-regular fa-user fa-2xl" style="color: rgb(0, 25, 102);"></i>
+                                </div>
+                                <img src="" alt="" id="profilePicTwo">
+                            </div>
+                            <div class="third-account">
+                                <h4 id="fullNameThirdAccount"></h4>
+                                <div class="copy-user-name">
+                                    <p>Username</p>
+                                    <p id="username-third-account"></p>
+                                </div>
+                                <div class="copy-user-name">
+                                    <p>Account Number</p>
+                                    <p id="accountNumberThirdAccount"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="below-account">
+                            <div class="each-container showprofile" onclick="showProfile()">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">account_box</span>
+                                    <div class="view-profile">
+                                        <p>View Profile</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">lock</span>
+                                    <div class="view-profile">
+                                        <p>Security</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">report</span>
+                                    <div class="view-profile">
+                                        <p>Statement & Reports</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">policy</span>
+                                    <div class="view-profile">
+                                        <p>Legal</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">quiz</span>
+                                    <div class="view-profile">
+                                        <p>FAQs</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">info</span>
+                                    <div class="view-profile">
+                                        <p>Get Help</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container chatwithus">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">chat</span>
+                                    <div class="view-profile">
+                                        <p>Chat With Us</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">show_chart</span>
+                                    <div class="view-profile">
+                                        <p>Account Limits</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container transaction" onclick="budgetpage()">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">show_chart</span>
+                                    <div class="view-profile">
+                                        <p>Transaction History</p>
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <div class="_container">
+                                    <span class="material-symbols-outlined">dark_mode</span>
+                                    <div class="view-profile">
+                                        <p>Dark Mode</p>
+                                        <label for="dark-mode-toggle" class="toggle-switch" id="" onchange="changeit()">
+                                            <input type="checkbox" id="dark-mode-toggle">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sign-out">
+                            <button onclick="signOut()">Sign Out</button>
+                        </div>
+                        <div class="modal-for-image" id="modal-for-image">
+                            <div class="inside-modal-for-image">
+                                <div class="container-for-modal-for-image">
+                                    <div class="image-div">
+                                        <img src="" alt="" id="image">
+                                        <input type="file" id="imageForProfile" onchange="changeimg()">
+                                    </div>
+                                    <div class="image-btn">
+                                        <button class="cancel-img-btn" onclick="cancelModalForImage()">Cancel</button>
+                                        <button onclick="confimUpdateForProfile()">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inside-account-page" id="profile-place">
+                <div class="general-inside-account-page">
+                    <h2>Account Details</h2>
+                    <div class="container-account">
+                        <div class="back-account">
+                            <button onclick="goBackAccount()"><span class="material-symbols-outlined">chevron_left</span> Back</button>
+                        </div>
+                        <div class="second-account">
+                            <div class="profile-image">
+                                <div class="icon-for-profile-picture" id="icon-for-profile-picture-three">
+                                    <i class="fa-regular fa-user fa-2xl" style="color: rgb(0, 25, 102);"></i>
+                                </div>
+                                <img src="" alt="" id="profilepicThree">
+                            </div>
+                            <div class="third-account">
+                                <h4 id="userId"></h4>
+                                <div class="copy-user-name">
+                                    <p>Username</p>
+                                    <p id="usernameid"></p>
+                                </div>
+                                <div class="copy-user-name">
+                                    <p>Account Number</p>
+                                    <p id="copyAccountNumber"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="below-account">
+                            <div class="each-container">
+                                <p>Your Username</p>
+                                <div class="editing-container">
+                                    <p id="Username@"></p>
+                                    <button onclick="editInfo()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>First Name</p>
+                                <div class="editing-container">
+                                    <p id="accountName"></p>
+                                    <button onclick="editInfoTwo()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>Lastname</p>
+                                <div class="editing-container">
+                                    <p id="countryFrom"></p>
+                                    <button onclick="editInfoThree()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>Email Address</p>
+                                <div class="editing-container">
+                                    <p id="emailAddress"></p>
+                                    <button onclick="editInfoFour()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>Phone Number</p>
+                                <div class="editing-container">
+                                    <p id="phoneNumber"></p>
+                                    <button onclick="editInfoFive()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>Gender</p>
+                                <div class="editing-container">
+                                    <p id="gender"></p>
+                                    <button onclick="editInfoSix()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>Date Of Birth</p>
+                                <div class="editing-container">
+                                    <p id="dateOfBirth"></p>
+                                    <button onclick="editInfoSeven()">Edit</button>
+                                </div>
+                            </div>
+                            <div class="each-container">
+                                <p>Marital Status</p>
+                                <div class="editing-container">
+                                    <p id="maritalStatus"></p>
+                                    <button onclick="editInfoEight()">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="myModalone" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Username</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsername">@mutalib</h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsername">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccount()">Cancel</button>
+                                        <button onclick="confirmEditing()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalTwo" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Firstname</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameTwo">@mutalib</h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsernametwo">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountTwo()">Cancel</button>
+                                        <button onclick="confirmEditingTwo()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalThree" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Lastname</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameThree">@mutalib</h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsernamethree">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountThree()">Cancel</button>
+                                        <button onclick="confirmEditingThree()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalFour" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Email Address Name</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameFour"></h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsernameFour">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountFour()">Cancel</button>
+                                        <button onclick="confirmEditingFour()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalFive" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Phone Number</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameFive"></h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="number" placeholder="Enter your new Username" id="userUsernameFive">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountFive()">Cancel</button>
+                                        <button onclick="confirmEditingFive()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalSix" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Gender Name</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameSix"></h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsernameSix">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountSix()">Cancel</button>
+                                        <button onclick="confirmEditingSix()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalSeven" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Date Of Birth</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameSeven"></h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsernameSeven">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountSeven()">Cancel</button>
+                                        <button onclick="confirmEditingSeven()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div id="myModalEight" class="modal-each-container">
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <h4>Edit Your Marital Status</h4>
+                                    <div class="input-field">
+                                        <p>Username</p>
+                                        <h5 id="showuserUsernameEight"></h5>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>New Username</p>
+                                        <input type="text" placeholder="Enter your new Username" id="userUsernameEight">
+                                    </div>
+                                    <div class="editing-btn">
+                                        <button class="canceleditingbutton" onclick="cancelModalForAccountEight()">Cancel</button>
+                                        <button onclick="confirmEditingEight()">Confirm</button>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="delete-account">
+                            <button onclick="DeleteAccount()">Delete Account<span class="material-symbols-outlined">chevron_right</span></button>
+                            <button>Restrict Account<span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="home-page" id="home_page">
+            <div class="intro" id="intro">
+                <h2>Welcome <span id="username"></span>!</h2>
+            </div>
+            <div class="nigeria-amount" id="nigeria-amount">
+                <div class="general-inside-nigeria-amount">
+                    <div class="first-one">
+                        <div class="pop-up">
+                            <span class="material-symbols-outlined">more_horiz</span>
+                        </div>
+                        <div class="flag">
+                            <img src="../pictures/Flag_of_Nigeria.svg.png" alt="">
+                            <!-- <div id="icon-for-profile-picture-one">
+                                <i class="fa-regular fa-user fa-2xl" style="color: rgb(0, 25, 102);"></i>
+                            </div> -->
+                            <!-- <img src="" alt="" id="toDisplayProfileImage"> -->
+                        </div>
+                        <div class="currency" onclick="itdisappears()">
+                            <small>Nigerian Naira</small>
+                            <h2>₦<span id="money"></span></h2>
+                            <small id="updateTime"></small>
+                        </div>
+                    </div>
+                    <div class="second-part">
+                        <button><span class="material-symbols-outlined">change_circle</span> Convert</button>
+                        <button onclick="addMoneyDiv()"><span class="material-symbols-outlined">add_circle</span> Add Money</button>
+                    </div>
+                </div>
+            </div>
+            <div class="button-below" id="button-below">
+                <div class="general-inside-button-below">
+                    <button onclick="spend()"><span class="material-symbols-outlined">payments</span>Spend</button>
+                    <button onclick="saveinfo()" id="saveinfo"><span class="material-symbols-outlined">savings</span>Save</button>
+                    <button onclick="borrow()"><span class="material-symbols-outlined">savings</span>Borrow</button>
+                    <button onclick="invest()"><span class="material-symbols-outlined">savings</span>Invest</button>
+                </div>
+            </div>
+            <div class="save-div" id="save_div">
+                <div class="general">
+                    <h4>Sage Pockets</h4>
+                    <p>Put money away daily, weekly, monthly or as you spend.</p>
+                    <img src="../pictures/istockphoto-1266251072-1024x1024.jpg" alt="">
+                    <button>Save Now</button>
+                </div>
+            </div>
+            <div class="addMoney" id="addMoneyDiv">
+                <div class="inside-add-money">
+                    <div class="back" onclick="addMoneyBack()">
+                        <button><span class="material-symbols-outlined">chevron_left</span> Button</button>
+                    </div>
+                    <div class="text">
+                        <h2>Add Money</h2>
+                    </div>
+                    <div class="addMoney-body">
+                        <div class="add-money-buttons">
+                            <div class="add-money-icons">
+                                <span class="material-symbols-outlined">alternate_email</span>
+                            </div>
+                            <div class="add-money-text">
+                                <h3>Share your @Username</h3>
+                                <p>Recieve money from other Sage Users with your Unique Username</p>
+                            </div>
+                            <div class="right-chevron">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                        <div class="add-money-buttons" onclick="bankTransfer()">
+                            <div class="add-money-icons">
+                                <span class="material-symbols-outlined">send</span>
+                            </div>
+                            <div class="add-money-text">
+                                <h3>Bank Transfer</h3>
+                                <p>From Bank app or Internet banking</p>
+                            </div>
+                            <div class="right-chevron">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                        <div class="add-money-buttons">
+                            <div class="add-money-icons">
+                                <span class="material-symbols-outlined">tag</span>
+                            </div>
+                            <div class="add-money-text">
+                                <h3>USSD</h3>
+                                <p>With your other bank's USSD code.</p>
+                            </div>
+                            <div class="right-chevron">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                        <div class="add-money-buttons" onclick="addCard()">
+                            <div class="add-money-icons">
+                                <span class="material-symbols-outlined">credit_card</span>
+                            </div>
+                            <div class="add-money-text">
+                                <h3>Card</h3>
+                                <p>Add money with a debit card.</p>
+                            </div>
+                            <div class="right-chevron">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                        <div class="add-money-buttons" onclick="cashDeposit()">
+                            <div class="add-money-icons">
+                                <span class="material-symbols-outlined">local_atm</span>
+                            </div>
+                            <div class="add-money-text">
+                                <h3>Cash Deposit</h3>
+                                <p>Deposit cash at our partner banks</p>
+                            </div>
+                            <div class="right-chevron">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="addMoney" id="banktransferdiv">
+                <div class="inside-add-money">
+                    <div class="back" onclick="exitBankTransferDiv()">
+                        <button><span class="material-symbols-outlined">chevron_left</span> Button</button>
+                    </div>
+                    <div class="text">
+                        <h2>Transfer</h2>
+                        <p>Use the details below to send money to your Sage account from any bank's app or throught internet banking</p>
+                    </div>
+                    <div class="addMoney-body">
+                        <div class="text-body">
+                            <strong>Bank</strong>
+                            <div class="text-container">
+                                <p>Sage Microfinance Bank</p>
+                            </div>
+                        </div>
+                        <div class="text-body">
+                            <strong>Account Number</strong>
+                            <div class="text-container">
+                                <p>789263457109354</p>
+                            </div>
+                        </div>
+                        <div class="text-body">
+                            <strong>Account Name</strong>
+                            <div class="text-container">
+                                <p>ADEBAYO ADIO MUTALIB</p>
+                            </div>
+                        </div>
+                        <div class="button-below-it">
+                            <button>Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="addMoney" id="cash-deposit">
+                <div class="inside-add-money">
+                    <div class="back" onclick="exitCashDeposit()">
+                        <button><span class="material-symbols-outlined">chevron_left</span> Button</button>
+                    </div>
+                    <div class="text">
+                        <h2>Add By Deposit</h2>
+                        <p>You can deposit money into your Sage account free of charge at any GTBank or Zenith Bank branch</p>
+                    </div>
+                    <div class="addMoney-body">
+                        <div class="heading-add-money">
+                            <h4>How to</h4>
+                        </div>
+                        <div class="other-bank">
+                            <div class="other-bank-logo">
+                                <div class="logo-image">
+                                    <img src="../pictures/images.png" alt="">
+                                </div>
+                                <h3>GTBank</h3>
+                            </div>
+                            <div class="other-bank-text">
+                                <p>Ask to pay into your Sage account with GT collect. You'll have to fill a deposit slip with your Sage account name and account number.</p>
+                            </div>
+                        </div>
+                        <div class="other-bank">
+                            <div class="other-bank-logo">
+                                <div class="logo-image">
+                                    <img src="../pictures/images.png" alt="">
+                                </div>
+                                <h3>Zenith</h3>
+                            </div>
+                            <div class="other-bank-text">
+                                <p>Give the teller your Sage account number and this xpath account number: <em>1133145672</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="addMoney" id="add-card-money">
+                <div class="inside-add-money">
+                    <div class="back" onclick="exitAddMouney()">
+                        <button><span class="material-symbols-outlined">chevron_left</span> Button</button>
+                    </div>
+                    <div class="text">
+                        <h2>Add By Card</h2>
+                    </div>
+                    <div class="addMoney-body">
+                        <div class="card-image">
+                            <img src="../pictures/corporate-purchasing-mastercard-card-1280x720.png" alt="">
+                        </div>
+                        <div class="text-add-card">
+                            <p>Everything in Sage is made easy, Please enjoy</p>
+                        </div>
+                        <div class="btn">
+                            <button onclick="nextPageAddMoneySecond()">Add Money</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="addMoney" id="add-card-money-second">
+                <div class="inside-add-money">
+                    <div class="back" onclick="exitAddMoneySecond()">
+                        <button><span class="material-symbols-outlined">chevron_left</span> Button</button>
+                    </div>
+                    <div class="text">
+                        <h2>Add By Card</h2>
+                    </div>
+                    <div class="addMoney-body">
+                        <div class="text-second-card">
+                            <p>How much will you like to add from your card?</p>
+                        </div>
+                        <div class="container-add-card">
+                            <h4>Amount</h4>
+                            <div class="place-to-add-money">
+                                <div class="currency">
+                                    <h2>₦</h2>
+                                </div>
+                                <input type="number" placeholder="Add an amount" id="amountToEnter">
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <button onclick="toModalAddMoney()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="invest-div" id="invest_div">
+                <div class="general-invest">
+                    <h4>Investments made easy</h4>
+                    <img src="../pictures/invess.webp" alt="">
+                    <p>Buy stocks with as little as $10.</p>
+                    <button>Find Stock</button>
+                    <small>Kuda doesn’t give investment advice. Please, consult your legal, financial and tax advisers before you buy stocks.</small>
+                    <small>Powered by SAGE</small>
+                </div>
+            </div>
+            <div class="borrow-div" id="borrow_div">
+                <div class="general-borrow">
+                    <div class="container">
+                        <h4>Overdraft</h4>
+                        <p>Spend whenever your account balance is low and repay whenever you get paid</p>
+                    </div>
+                    <div class="container">
+                        <h4>Loan</h4>
+                        <p>Apply for a low-interest loan, get money in minutes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="changeable">
+                <div class="div-one" id="div_one">
+                    <div class="general-inside-div-one">
+                        <div class="inside-div-one">
+                            <div class="text-area">
+                                <h1>Your NGN account is all set</h1>
+                                <p>We’re really happy that you picked us to look after your money. Your Nigerian Naira account number is <span id="showAccountNumber"></span></p>
+                            </div>
+                            <div class="image">
+                                <img src="../pictures/SAGE_Publishing_logo_2023.svg.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-two" id="div_two">
+                    <div class="nothing-image">
+                        <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="31.5" cy="31.5" r="31.5" fill="#DBDCE0"></circle>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 21C18 19.3431 19.3431 18 21 18H41.3077C42.9645 18 44.3077 19.3431 44.3077 21V41.3077C44.3077 42.9645 42.9645 44.3077 41.3077 44.3077H21C19.3431 44.3077 18 42.9645 18 41.3077V21ZM21.4615 24.4615C21.4615 22.8047 22.8047 21.4615 24.4615 21.4615H38.5385C40.1953 21.4615 41.5385 22.8047 41.5385 24.4615V33.7097C41.5385 35.3569 40.2031 36.6923 38.5558 36.6923H35.6389C35.4527 36.6923 35.3078 36.8523 35.3078 37.0385C35.3078 39.1414 33.603 40.8462 31.5001 40.8462C29.3972 40.8462 27.6924 39.1414 27.6924 37.0385C27.6924 36.8523 27.5475 36.6923 27.3613 36.6923H24.4443C22.797 36.6923 21.4615 35.3569 21.4615 33.7095V24.4615Z" fill="white"></path>
+                        </svg>
+                    </div>
+                    <div class="nothing-text">
+                        <h2>Nothing to see yet</h2>
+                        <p>Spend some money and we will show you your transactions Here</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-for-add-money" id="modalForAddMoney">
+                <div class="inside-modal-for-add-money">
+                    <div class="modal-body">
+                        <div class="text">
+                            <h4>Confirm</h4>
+                        </div>
+                        <div class="from">
+                            <p>From</p>
+                            <h4>New Card</h4>
+                        </div>
+                        <div class="from">
+                            <p>Amount</p>
+                            <h4 id="amountToShowOnAddMoneyModal"></h4>
+                        </div>
+                        <div class="from">
+                            <p>Payment Gateway Fee</p>
+                            <h4>0.00</h4>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="cancel" onclick="cancelModalForAddMoney()">Cancel</button>
+                            <button onclick="makePayment()">Add Money</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="send-page" id="send_page">
+            <div class="general-send-page" id="general-send-page">
+                <h1>Send</h1>
+                <div class="container">
+                    <div class="small-container">
+                        <div class="inside-small-container">
+                            <div class="text">
+                                <h4>Send to Beneficiaries</h4>
+                                <p>Add a beneficiary to get started.</p>
+                            </div>
+                            <button>Add</button>
+                        </div>
+                    </div>
+                    <div class="small-container">
+                        <div class="inside-small-container" onclick="sendToSage()">
+                            <div class="text">
+                                <h4>Send to Sage's Users</h4>
+                                <p>Send to any Sage account for free.</p>
+                            </div>
+                            <button class="icons"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                    </div>
+                    <div class="small-container">
+                        <div class="inside-small-container">
+                            <div class="text">
+                                <h4>Send to Bank Account</h4>
+                                <p>Send to a local bank account.</p>
+                            </div>
+                            <button class="icons"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="send-to-sage-page" id="send-to-sage-page">
+                <h1>Send to Sage</h1>
+                <div class="container-for-send-to-sage">
+                    <div class="back-send-to-sage">
+                        <button onclick="backToGeneralSendPage()"><span class="material-symbols-outlined">chevron_left</span>Back</button>
+                    </div>
+                    <h3>Send to Sage</h3>
+                    <div class="search-for-user">
+                        <button><span class="material-symbols-outlined">search</span></button>
+                        <input type="text" placeholder="@Username or Account Number" id="searchForUserInput" oninput="vanish()">
+                    </div>
+                    <div class="search-for-user-1" id="search-for-user-1">
+                        <h4 id="foundUser"></h4>
+                    </div>
+                    <div class="theUsername" id="searchForUsername">
+                        <button onclick="searchforit()">Search</button>
+                    </div>
+                    <div class="down-send-to-sage" id="down-send-to-sage">
+                        <div class="inside-down-send-to-sage">
+                            <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="31.5" cy="31.5" r="31.5" fill="#DBDCE0"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M18 21C18 19.3431 19.3431 18 21 18H41.3077C42.9645 18 44.3077 19.3431 44.3077 21V41.3077C44.3077 42.9645 42.9645 44.3077 41.3077 44.3077H21C19.3431 44.3077 18 42.9645 18 41.3077V21ZM21.4615 24.4615C21.4615 22.8047 22.8047 21.4615 24.4615 21.4615H38.5385C40.1953 21.4615 41.5385 22.8047 41.5385 24.4615V33.7097C41.5385 35.3569 40.2031 36.6923 38.5558 36.6923H35.6389C35.4527 36.6923 35.3078 36.8523 35.3078 37.0385C35.3078 39.1414 33.603 40.8462 31.5001 40.8462C29.3972 40.8462 27.6924 39.1414 27.6924 37.0385C27.6924 36.8523 27.5475 36.6923 27.3613 36.6923H24.4443C22.797 36.6923 21.4615 35.3569 21.4615 33.7095V24.4615Z" fill="white"></path></svg>
+                            <h4>What's their @username?</h4>
+                            <p>Type in the @username of the recipient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="send-to-sage-page-two" id="send-to-sage-page-two">
+                <h1>Send To Sage</h1>
+                <div class="container-for-send-to-sage-two">
+                    <div class="first-i">
+                        <h4 id="userAccountToSend"></h4>
+                    </div>
+                    <div class="empty">
+
+                    </div>
+                    <div class="balance-showing">
+                        <p>NGN Balance <span id="showBalance"></span></p>
+                    </div>
+                    <div class="below-send-to-sage-page-two">
+                        <div class="one">
+                            <input type="number" placeholder="Amount"  id="amounttosend">
+                            <p>NGN</p>
+                        </div>
+                        <div class="one">
+                            <input type="text" placeholder="message" id="message">
+                            <button onclick="sendMoney()"><span class="material-symbols-outlined">send</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="modalForTransaction">
+                <div class="inside-modal">
+                    <div class="container-modal">
+                        <div class="confirm-text">
+                            <h2>Confirm Transaction</h2>
+                        </div>
+                        <div class="card-fee">
+                            <p>Amount to Send</p>
+                            <h2>₦ <span id="toDisplayTransactionAmount"></span>.00</h2>
+                        </div>
+                        <div class="fee">
+                            <div class="fee-one">
+                                <p>Amount</p>
+                                <h4>₦ <span id="toDisplayTransactionAmountTwo"></span>.00</h4>
+                            </div>
+                        </div>
+                        <div class="fee fee-second">
+                            <div class="fee-one">
+                                <p>From:</p>
+                                <h4>NGN Balance</h4>
+                            </div>
+                        </div>
+                        <div class="transactions-pin">
+                            <p>Please, type in your transaction PIN.</p>
+                            <div class="pin-container">
+                                <input type="text" maxlength="1" id="sendpin1"  oninput="moveToNextSend()">
+                                <input type="text" maxlength="1" id="sendpin2"  oninput="moveToNextSend()">
+                                <input type="text" maxlength="1" id="sendpin3" oninput="moveToNextSend()">
+                                <input type="text" maxlength="1" id="sendpin4" oninput="moveToPrevSend()">
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="cancelModalForSend()">Cancel</button> 
+                            <button class="Confirm" onclick="confirmPaymentForSend()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="budget-page" id="budget_page">
+            <h2>Transaction History</h2>
+            <div class="inside-budget-page">
+                <div class="category">
+                    <select id="changeCategory" onchange="categoryChange()">
+                        <option>All</option>
+                        <option>Airtime</option>
+                        <option>Data</option>
+                        <option>Send</option>
+                        <option>Recieve</option>
+                        <option>Deposit</option>
+                    </select>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>To/From</td>
+                            <td>Date</td>
+                            <td>Time</td>
+                            <td>Type</td>
+                            <td>Amount</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody id="displayAllTransactions">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="pay-page" id="pay_page">
+            <h1>Pay</h1>
+            <div class="inside-pay-page" id="inside-pay-page">
+                <div class="general-inside-pay-page">
+                    <div class="essentials">
+                        <h2>Essentials</h2>
+                        <div class="container">
+                            <div class="box" onclick="airtel()">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">wifi</span>
+                                    <p>Airtime</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box" onclick="internet()">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">signal_cellular_alt</span>
+                                    <p>Internet</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">tv</span>
+                                    <p>TV</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">electric_bolt</span>
+                                    <p>Electricity</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">solar_power</span>
+                                    <p>Solar</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="essentials payment">
+                        <h2>Cardless Payments</h2>
+                        <div class="container">
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">account_balance</span>
+                                    <p>Pay with Bank</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">call</span>
+                                    <p>Pay with USSD</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">terminal</span>
+                                    <p>POS Terminal</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">atm</span>
+                                    <p>ATM Withdrawal</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">payments</span>
+                                    <p>Pay A Business</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="essentials Lifestyle">
+                        <h2>Lifestyle</h2>
+                        <div class="container">
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">sports_and_outdoors</span>
+                                    <p>Betting</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">redeem</span>
+                                    <p>Gift Cards</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">directions_car</span>
+                                    <p>Transport</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                            <div class="box">
+                                <div class="icons">
+                                    <span class="material-symbols-outlined">school</span>
+                                    <p>Education</p>
+                                </div>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="airtel-page" id="airtel_page">
+                <div class="general-airtel-page">
+                    <div class="inside-airtel-page">
+                        <div class="back">
+                            <button onclick="goback()"><span class="material-symbols-outlined">chevron_left</span> back</button>
+                        </div>
+                        <div class="word-airtel">
+                            <h1>Airtime</h1>
+                        </div>
+                        <div class="amount">
+                            <p>Amount</p>
+                            <div class="naira-symbol">
+                                <div class="naira-note">
+                                    ₦
+                                </div>
+                                <select name="" id="money-for-airtime">
+                                    <option>Select Your Amount</option>
+                                    <option>100</option>
+                                    <option>200</option>
+                                    <option>500</option>
+                                    <option>1000</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <p>Phone Number</p>
+                            <div class="naira-symbol naira-symbol-one">
+                                <p>+234</p>
+                                <input class="phone-number" type="number" placeholder="What phone number?" id="phone-for-airtime">
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <p>Choose a Network</p>
+                            <div class="naira-symbol">
+                                <select name="" id="network-for-airtime">
+                                    <option>Select</option>
+                                    <option>MTN</option>
+                                    <option>GLO</option>
+                                    <option>9MOBILE</option>
+                                    <option>AIRTEL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <button onclick="payMoney()">Pay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="airtel-page" id="data_page">
+                <div class="general-airtel-page">
+                    <div class="inside-airtel-page">
+                        <div class="back">
+                            <button onclick="goback()"><span class="material-symbols-outlined">chevron_left</span> back</button>
+                        </div>
+                        <div class="word-airtel">
+                            <h1>Internet Data</h1>
+                        </div>
+                        <div class="amount">
+                            <p>Amount</p>
+                            <div class="naira-symbol">
+                                <div class="naira-note">
+                                    ₦
+                                </div>
+                                <select name="" id="money-for-Data">
+                                    <option>Select the amount</option>
+                                    <option>100</option>
+                                    <option>200</option>
+                                    <option>500</option>
+                                    <option>1000</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <p>Phone Number</p>
+                            <div class="naira-symbol naira-symbol-one">
+                                <p>+234</p>
+                                <input class="phone-number" type="number" placeholder="What phone number?" id="phone-for-Data">
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <p>Choose a Network</p>
+                            <div class="naira-symbol">
+                                <select name="" id="network-for-Data">
+                                    <option>Select</option>
+                                    <option>MTN</option>
+                                    <option>GLO</option>
+                                    <option>9MOBILE</option>
+                                    <option>AIRTEL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <button onclick="payForData()">Pay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="modalForAirtime">
+                <div class="inside-modal">
+                    <div class="container-modal">
+                        <div class="confirm-text">
+                            <h2>Confirm</h2>
+                        </div>
+                        <div class="card-fee">
+                            <p>Total Airtime fee</p>
+                            <h2>₦ <span id="amountToPay"></span>.00</h2>
+                        </div>
+                        <div class="fee">
+                            <div class="fee-one">
+                                <p>Airtime Issuing Fee</p>
+                                <h4>₦ <span id="amountToPayTwo"></span>.00</h4>
+                            </div>
+                            <div class="fee-two">
+                                <p>Delivery Fee:</p>
+                                <h4>₦0.00</h4>
+                            </div>
+                        </div>
+                        <div class="fee fee-second">
+                            <div class="fee-one">
+                                <p>From:</p>
+                                <h4>NGN Balance</h4>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Payment for Airtime is final and cannot be refunded</p>
+                        </div>
+                        <div class="transactions-pin">
+                            <p>Please, type in your transaction PIN.</p>
+                            <div class="pin-container">
+                                <input type="text" maxlength="1" id="pin1"  oninput="moveToNext()">
+                                <input type="text" maxlength="1" id="pin2"  oninput="moveToNext()">
+                                <input type="text" maxlength="1" id="pin3" oninput="moveToNext()">
+                                <input type="text" maxlength="1" id="pin4" oninput="moveToPrev()">
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="cancelModalForAirtime()">Cancel</button> 
+                            <button class="Confirm" onclick="confirmPaymentForAirtime()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="modalForData">
+                <div class="inside-modal">
+                    <div class="container-modal">
+                        <div class="confirm-text">
+                            <h2>Confirm</h2>
+                        </div>
+                        <div class="card-fee">
+                            <p>Total Data fee</p>
+                            <h2>₦ <span id="amountToPayForData"></span>.00</h2>
+                        </div>
+                        <div class="fee">
+                            <div class="fee-one">
+                                <p>Data Issuing Fee</p>
+                                <h4>₦ <span id="amountToPayTwoForData"></span>.00</h4>
+                            </div>
+                            <div class="fee-two">
+                                <p>Delivery Fee:</p>
+                                <h4>₦0.00</h4>
+                            </div>
+                        </div>
+                        <div class="fee fee-second">
+                            <div class="fee-one">
+                                <p>From:</p>
+                                <h4>NGN Balance</h4>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Payment for Data is final and cannot be refunded</p>
+                        </div>
+                        <div class="transactions-pin">
+                            <p>Please, type in your transaction PIN.</p>
+                            <div class="pin-container">
+                                <input type="text" maxlength="1" id="pin1ForData"  oninput="moveToNextForData()">
+                                <input type="text" maxlength="1" id="pin2ForData"  oninput="moveToNextForData()">
+                                <input type="text" maxlength="1" id="pin3ForData" oninput="moveToNextForData()">
+                                <input type="text" maxlength="1" id="pin4ForData" oninput="moveToPrevForData()">
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="cancelModalForData()">Cancel</button> 
+                            <button class="Confirm" onclick="confirmPaymentForData()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-page" id="card_page">
+            <div class="inside-card-page" id="insideCardPage">
+                <div class="first" id="first">
+                    <h2>Card</h2>
+                    <button onclick="sageCard()">Get A Sage Card</button>
+                </div>
+                <div class="body">
+                    <div class="inside-body">
+                        <div class="image">
+                            <img src="../pictures/virtualcard.png" alt="">
+                        </div>
+                        <div class="text">
+                            <p>Spend online and offline with your Sage cards.</p>
+                        </div>
+                        <div class="container">
+                            <div class="inside-small-container">
+                                <div class="text-it" onclick="sageCard()">
+                                    <h4>Get your Sage's Card now</h4>
+                                    <p>You can use it anywhere you are.</p>
+                                </div>
+                                <button><span class="material-symbols-outlined">chevron_right</span></button>
+                            </div>
+                            <div class="inside-small-container">
+                                <div class="text-it">
+                                    <h4>Sage' Card FAQs</h4>
+                                    <p>Learn more about Sage Cards.</p>
+                                </div>
+                                <button><span class="material-symbols-outlined">chevron_right</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="get-a-card" id="getACard">
+                <div class="general-get-a-card">
+                    <div class="inside-get-a-card">
+                        <div class="back-for-get-a-card">
+                            <button onclick="goBackToCardPage()"><span class="material-symbols-outlined">chevron_left</span>Back</button>
+                        </div>
+                        <div class="card-design">
+                            <img src="../pictures/sageCard.svg" alt="">
+                        </div>
+                        <div class="text-get-card">
+                            <h4>Virtual Card</h4>
+                            <p>Pay bills and anything using the Sage's Virtual Card</p>
+                        </div>
+                        <div class="card-issuing">
+                            <p>Card Issuing Fee</p>
+                            <p>₦ 1000</p>
+                        </div>
+                        <div class="get-virtual-card">
+                            <button onclick="getVirtualCard()">Get A Virtual Card</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="card-container" id="cardContainer">
+                <div class="general-card-container">
+                    <div class="inside-card-container">
+                        <div class="back-for-card-container">
+                            <button onclick="goBackToGetACard()"><span class="material-symbols-outlined">chevron_left</span>Back</button>
+                        </div>
+                        <div class="text-get-card-container">
+                            <h4>Create Card Pin</h4>
+                            <p>Set a 4 digits Card Pin. Use you Card Pin to Make Payment Online</p>
+                        </div>
+                        <div class="container-card-container">
+                            <p>Card Pin</p>
+                            <div class="container">
+                                <input type="password" id="pinOne">
+                            </div>
+                        </div>
+                        <div class="container-card-container">
+                            <p>Confirm Card Pin</p>
+                            <div class="container">
+                                <input type="password" id="pinTwo">
+                            </div>
+                        </div>
+                        <div class="button-for-card-container">
+                            <button onclick="paymentForCard()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="modalForCardPage">
+                <div class="inside-modal">
+                    <div class="container-modal">
+                        <div class="confirm-text">
+                            <h2>Confirm</h2>
+                        </div>
+                        <div class="card-fee">
+                            <p>Total Card fee</p>
+                            <h2>₦ 1000.00</h2>
+                        </div>
+                        <div class="fee">
+                            <div class="fee-one">
+                                <p>Virtual Card Issuing Fee</p>
+                                <h4>₦ 1000.00</h4>
+                            </div>
+                            <div class="fee-two">
+                                <p>Delivery Fee:</p>
+                                <h4>₦0.00</h4>
+                            </div>
+                        </div>
+                        <div class="fee fee-second">
+                            <div class="fee-one">
+                                <p>From:</p>
+                                <h4>NGN Balance</h4>
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <p>Payment for Card Issuing is final and cannot be refunded</p>
+                        </div>
+                        <div class="transactions-pin">
+                            <p>Please, type in your transaction PIN.</p>
+                            <div class="pin-container">
+                                <input type="text" maxlength="1" id="inputPinOne" onkeyup="movingToNext()">
+                                <input type="text" maxlength="1" id="inputPinTwo" onkeyup="movingToNext()">
+                                <input type="text" maxlength="1" id="inputPinThree" onkeyup="movingToNext()">
+                                <input type="text" maxlength="1" id="inputPinFour" onkeyup="movingToPrev()">
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="cancelModal()">Cancel</button> 
+                            <button class="Confirm" onclick="confirmModal()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="show-card" id="showCard">
+                <div class="visa-card">
+                    <div class="inside-visa-card">
+                        <div class="first-row">
+                            <div class="logo">
+                                <img src="../pictures/cardtype.png" alt="">
+                            </div>
+                            <div class="logo">
+                                <img src="../pictures/SAGE_Publishing_logo_2023.svg.png" alt="sage-log">
+                            </div>
+                        </div>
+                        <div class="second-row">
+                            <div class="account-details">
+                                <img src="../pictures/Chip.png" alt="">
+                            </div>
+                        </div>
+                        <div class="third-row">
+                            <h1 id="fourValuesOne">1234</h1>
+                            <h1 id="fourValuesTwo">5678</h1>
+                            <h1 id="fourValuesThree">9876</h1>
+                            <h1 id="fourValuesFour">5432</h1>
+                        </div>
+                        <div class="fourth-row">
+                            <p>1234</p>
+                            <div class="valid">
+                                <div class="nubers">
+                                    <p>Valid</p>
+                                    <p>monthly</p>
+                                </div>
+                                <h3>06/30</h3>
+                            </div>
+                        </div>
+                        <div class="fifth-row">
+                            <h4 id="cardHolderName"></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="back-of-card">
+                    <div class="inside-back-visa-card">
+                        <div class="row-one">
+
+                        </div>
+                        <div class="row-two">
+                            <p>122</p>
+                        </div>
+                        <div class="row-on">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, rem eligendi impedit modi quo iste. Facere nam placeat est quibusdam, vitae aliquam illum quam eaque error laudantium. Molestias, beatae fugit.</p>
+                        </div>
+                        <div class="row-three">
+                            <div class="logo">
+                                <img src="../pictures/SAGE_Publishing_logo_2023.svg.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script src="../js/dashboard.js"></script>
+<!-- <script src="../js/home.js"></script> -->
+<!-- <script src="../js/send.js"></script> -->
+<script src="../js/card.js"></script>
+<script src="../js/pay.js"></script>
+<script src="../js/budget.js"></script>
+<script src="../js/account.js"></script>
